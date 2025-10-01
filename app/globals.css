@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #0f0b1a;
+  --foreground: #f8fafc;
+  --accent: #ec4899;
+  --accent-light: #f9a8d4;
+  --accent-dark: #be185d;
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --card-bg-hover: rgba(255, 255, 255, 0.12);
+  --border: rgba(236, 72, 153, 0.4);
+  --text-muted: #cbd5e1;
+  --blossom-pink: rgba(236, 72, 153, 0.2);
+  --blossom-light: rgba(249, 168, 212, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --rain-blue: rgba(59, 130, 246, 0.3);
+  --purple-night: rgba(139, 92, 246, 0.2);
+  --confession-font: 'Source Code Pro', monospace;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  min-height: 100vh;
+  background-image: 
+    /* Cherry blossom trees and rain */
+    radial-gradient(circle at 15% 30%, rgba(236, 72, 153, 0.2) 0%, transparent 25%),
+    radial-gradient(circle at 85% 20%, rgba(249, 168, 212, 0.15) 0%, transparent 20%),
+    radial-gradient(circle at 25% 70%, rgba(236, 72, 153, 0.18) 0%, transparent 30%),
+    radial-gradient(circle at 75% 80%, rgba(249, 168, 212, 0.12) 0%, transparent 25%),
+    radial-gradient(circle at 50% 10%, rgba(139, 92, 246, 0.1) 0%, transparent 35%),
+    /* Rain streaks */
+    linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.1) 2%, transparent 4%),
+    linear-gradient(90deg, transparent 10%, rgba(59, 130, 246, 0.08) 12%, transparent 14%),
+    linear-gradient(90deg, transparent 20%, rgba(59, 130, 246, 0.12) 22%, transparent 24%),
+    /* Night sky gradient */
+    linear-gradient(135deg, rgba(15, 11, 26, 0.9) 0%, rgba(30, 20, 50, 0.7) 50%, rgba(15, 11, 26, 0.95) 100%);
+  background-attachment: fixed;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated rain and cherry blossom petals */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    /* Floating cherry blossom petals */
+    radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.15) 0%, transparent 15%),
+    radial-gradient(circle at 80% 15%, rgba(249, 168, 212, 0.12) 0%, transparent 12%),
+    radial-gradient(circle at 30% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 18%),
+    radial-gradient(circle at 70% 85%, rgba(249, 168, 212, 0.08) 0%, transparent 15%),
+    /* Rain drops */
+    linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.1) 1%, transparent 2%),
+    linear-gradient(90deg, transparent 5%, rgba(59, 130, 246, 0.08) 6%, transparent 7%),
+    linear-gradient(90deg, transparent 15%, rgba(59, 130, 246, 0.12) 16%, transparent 17%);
+  animation: rainAndBlossoms 25s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes rainAndBlossoms {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(-15px) rotate(1deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-8px) rotate(-1deg);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translateY(-12px) rotate(0.5deg);
+    opacity: 0.85;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(236, 72, 153, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(236, 72, 153, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(236, 72, 153, 0.5);
+}
+
+/* Smooth fluid animations */
+* {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Floating cherry blossom petals */
+@keyframes petalFall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Additional floating elements */
+.floating-petal {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(252, 231, 243, 0.8) 0%, rgba(249, 168, 212, 0.6) 50%, transparent 100%);
+  border-radius: 50% 0 50% 0;
+  animation: petalFall 15s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-petal:nth-child(odd) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+.floating-petal:nth-child(even) {
+  animation-delay: -10s;
+  animation-duration: 18s;
+}
+
+/* Beautiful glass morphism for rainy night theme */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(236, 72, 153, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 20px rgba(236, 72, 153, 0.1);
+}
+
+.glass-effect:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(236, 72, 153, 0.3);
+  box-shadow: 
+    0 12px 40px 0 rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(236, 72, 153, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 0 30px rgba(236, 72, 153, 0.15);
+}
+
+/* Enhanced blur effects */
+.blur-soft {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.blur-medium {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.blur-strong {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Pinkish glow effects */
+.glow-pink {
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+}
+
+.glow-pink-strong {
+  box-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+}
+
+/* Bouncy animations */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3) translateY(-50px);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05) translateY(0);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(0.95) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceInUp {
+  0% {
+    transform: translateY(30px) scale(0.9);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-10px) scale(1.02);
+    opacity: 0.8;
+  }
+  80% {
+    transform: translateY(5px) scale(0.98);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceInDown {
+  0% {
+    transform: translateY(-30px) scale(0.9);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(10px) scale(1.02);
+    opacity: 0.8;
+  }
+  80% {
+    transform: translateY(-5px) scale(0.98);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Hover animations with fluid motion */
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.15);
+}
+
+.bounce-in {
+  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.bounce-in-up {
+  animation: bounceInUp 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.bounce-in-down {
+  animation: bounceInDown 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Cherry blossom petal shapes */
+.petal-shape {
+  border-radius: 50% 0 50% 0;
+  transform: rotate(45deg);
+}
+
+.petal-shape-alt {
+  border-radius: 0 50% 0 50%;
+  transform: rotate(-45deg);
+}
