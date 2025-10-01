@@ -1,6 +1,4 @@
 /**
- * Dark Glass Theme with Bouncy Animations - Tailwind CSS Classes
- * 
  * A beautiful, dark theme with glass morphism effects and bouncy animations
  */
 
