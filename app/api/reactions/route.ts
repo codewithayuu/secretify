@@ -88,8 +88,8 @@ export async function POST(req: Request) {
       counts: { support_count: supportCount, relate_count: relateCount }
     });
 
-  } catch (err: any) {
-    return NextResponse.json({ success: false, error: err.message }, { status: 400 });
+  } catch (err: unknown) {
+    return NextResponse.json({ success: false, error: err instanceof Error ? err.message : 'Unknown error' }, { status: 400 });
   }
 }
 
@@ -110,8 +110,8 @@ export async function DELETE(req: Request) {
 
     if (error) throw error;
     return NextResponse.json({ success: true });
-  } catch (err: any) {
-    return NextResponse.json({ success: false, error: err.message }, { status: 400 });
+  } catch (err: unknown) {
+    return NextResponse.json({ success: false, error: err instanceof Error ? err.message : 'Unknown error' }, { status: 400 });
   }
 }
 
@@ -152,7 +152,7 @@ export async function GET(req: Request) {
       counts: { support_count: supportCount, relate_count: relateCount },
       userReactions
     });
-  } catch (err: any) {
-    return NextResponse.json({ success: false, error: err.message }, { status: 400 });
+  } catch (err: unknown) {
+    return NextResponse.json({ success: false, error: err instanceof Error ? err.message : 'Unknown error' }, { status: 400 });
   }
 }
