@@ -112,4 +112,5 @@ export const components = {
   header: 'glass-effect shadow-lg border-b border-[var(--glass-border)] sticky top-0 z-10',
   footer: 'glass-effect border-t border-[var(--glass-border)] text-center text-[var(--text-muted)] text-sm py-6 px-4 md:px-8',
   stackContainer: 'w-full',
+  mainContent: 'flex-1 p-6',
 };

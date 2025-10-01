@@ -3,22 +3,17 @@
 import { useState } from 'react'
 import ConfessionForm from '@/components/ConfessionForm'
 import ConfessionsStack from '@/components/ConfessionsStack'
-import Layout, {
-  Header,
-  MainContent,
+import {
   FormContainer,
-  StackContainer,
-  TwoColumnLayout
+  StackContainer
 } from '@/components/Layout'
 import FloatingPetals from '@/components/FloatingPetals'
 import Footer from '@/components/Footer'
 import { Confession } from '@/types/confession'
 
 export default function Home() {
-  const [newConfession, setNewConfession] = useState<Confession | null>(null)
-
   const handleConfessionAdded = (confession: Confession) => {
-    setNewConfession(confession)
+    // Optimistic update handled in ConfessionForm
   }
 
   return (
