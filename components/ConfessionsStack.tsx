@@ -163,7 +163,7 @@ export default function ConfessionsStack() {
             </div>
 
             <p className="text-base text-[var(--foreground)] leading-relaxed whitespace-pre-wrap" style={{ fontFamily: 'var(--confession-font)' }}>
-              "{confession.content}"
+              &quot;{confession.content}&quot;
             </p>
 
             <div className="flex items-center justify-between mt-3 pt-2 border-t border-[var(--border)]">

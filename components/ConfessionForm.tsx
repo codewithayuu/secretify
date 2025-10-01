@@ -120,7 +120,7 @@ export default function ConfessionForm({ onConfessionAdded }: ConfessionFormProp
           Share Your Secret
         </h1>
         <p className="text-sm text-[var(--text-muted)]">
-          Anonymously share what's on your mind
+          Anonymously share what&apos;s on your mind
         </p>
       </div>
 
